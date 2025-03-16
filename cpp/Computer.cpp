@@ -50,17 +50,4 @@ private:
     void setOS(OperatingSystem o) { os = o; }
     void setMemory(Memory m) { mem = m; }
     
-    // void addHardDrive(HardDrive hd) { hardDrives.push_back(hd); }
-    // void removeHardDrive(int index) {
-    //     if (index >= 0 && index < hardDrives.size()) {
-    //         hardDrives.erase(hardDrives.begin() + index);
-    //     }
-    // }
-
-    // void addApplication(Application app) { applications.push_back(app); }
-    // void removeApplication(int index) {
-    //     if (index >= 0 && index < applications.size()) {
-    //         applications.erase(applications.begin() + index);
-    //     }
-    // }
 };
