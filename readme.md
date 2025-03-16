@@ -1,10 +1,6 @@
 # Janji 
 Saya Yusrilia Hidayanti dengan NIM 2306828 mengerjakan Tugas Praktikum 3 dalam mata kuliah Desain dan Pemrograman Berorientasi Objek untuk keberkahanNya maka saya tidak melakukan kecurangan seperti yang telah dispesifikasikan. Aamiin.
 
-# Diagram
-Berikut adalah diagram kelas:
-![](diagram.png)
-
 # Desain Program
 Desain menerapkan konsep Object-Oriented Programming (OOP) dengan fitur berikut:
 
@@ -14,6 +10,10 @@ Desain menerapkan konsep Object-Oriented Programming (OOP) dengan fitur berikut:
 - __*[bonus]*__ __Hierarchical Inheritance__: `Application` dan `OperatingSystem` mewarisi `Software`.
 - __*[bonus]*__ __Multiple Inheritance__: `HardDrive` mewarisi `Storage` dan `Hardware`.
 - __*[bonus]*__ __Hybrid Inheritance__: Kombinasi hierarchical dan multiple inheritance.
+
+# Diagram
+Berikut adalah diagram kelas:
+![](diagram.png)
 
 ## Detail Kelas
 ### Storage
