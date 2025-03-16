@@ -80,4 +80,4 @@ Fungsi dalam Computer:
 4. Program menampilkan informasi komputer sebelum dan sesudah diupdate.
 
 # Dokumentasi
-![](python/image.png)
+![](python/screenshot/image.png)
