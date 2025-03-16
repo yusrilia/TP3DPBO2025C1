@@ -51,10 +51,10 @@ class Main:
         print("Added Spotify to Workstation.")
 
         print("\n~.~.~ Removing Hard Drives & Applications ~.~.~")
-        computers[0].remove_hard_drive("Samsung 970 Evo")
+        computers[0].remove_hard_drive("Samsung SSD")
         computers[1].remove_application("VS Code")
 
-        print("Removed Samsung 970 Evo from Gaming PC.")
+        print("Removed Samsung SSD from Gaming PC.")
         print("Removed VS Code from Workstation.")
 
         # Print Updated Computer Info
