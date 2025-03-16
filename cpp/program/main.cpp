@@ -48,20 +48,8 @@ int main() {
     // print computer informations
     cout << "\n~.~.~ Computer Info ~.~.~\n";    
     for (int i = 0; i < 2; i++) {
-        cout << "Computer #" << i+1 << ": " << computers[i].getType() << endl;
-        cout << "OS: " << computers[i].getOS().getName() << endl;
-        cout << "Memory: " << computers[i].getMemory().getSize() << "GB\n";
-
-        cout << "Hard Drives:\n";
-        for (const auto& hd : computers[i].getHardDrives()) {
-            cout << " - " << hd.getName() << " (" << hd.getCapacity() << ")\n";
-        }
-
-        cout << "Applications:\n";
-        for (const auto& app : computers[i].getApplications()) {
-            cout << " - " << app.getName() << " (" << app.getCategory() << ")\n";
-        }
-        cout << "~.~.~\n\n";
+        cout << "#" << i+1 << ": " << endl;
+        computers[i].printInfo();
     }
 
     // Simulation: Adding & Removing Hard Drives and Applications
@@ -80,22 +68,10 @@ int main() {
     cout << "Removed Samsung SSD from Gaming PC.\n";
     cout << "Removed VS Code from Workstation.\n";
 
-    cout << "\n~.~.~ Updated Computer Details ~.~.~\n";
+    cout << "\n~.~.~ Updated Computer Info ~.~.~\n";
     for (int i = 0; i < 2; i++) {
-        cout << "Computer #" << i+1 << ": " << computers[i].getType() << endl;
-        cout << "OS: " << computers[i].getOS().getName() << endl;
-        cout << "Memory: " << computers[i].getMemory().getSize() << "GB\n";
-
-        cout << "Hard Drives:\n";
-        for (const auto& hd : computers[i].getHardDrives()) {
-            cout << " - " << hd.getName() << " (" << hd.getCapacity() << ")\n";
-        }
-
-        cout << "Applications:\n";
-        for (const auto& app : computers[i].getApplications()) {
-            cout << " - " << app.getName() << " (" << app.getCategory() << ")\n";
-        }
-        cout << "~.~.~\n\n";
+        cout << "#" << i+1 << ": " << endl;
+        computers[i].printInfo();
     }
 
     return 0;

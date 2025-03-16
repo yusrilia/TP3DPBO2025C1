@@ -49,5 +49,22 @@ private:
     void setType(string t) { type = t; }
     void setOS(OperatingSystem o) { os = o; }
     void setMemory(Memory m) { mem = m; }
+
+    void printInfo() {
+        cout << "Computer Type: " << type << endl;
+        cout << "OS: " << os.getName() << endl;
+        cout << "Memory: " << mem.getSize() << "GB" << endl;
+
+        cout << "Hard Drives:" << endl;
+        for (const auto& hd : hardDrives) {
+            cout << " - " << hd.getName() << " (" << hd.getCapacity() << " GB)" << endl;
+        }
+
+        cout << "Applications:" << endl;
+        for (const auto& app : applications) {
+            cout << " - " << app.getName() << " (" << app.getCategory() << ")" << endl;
+        }
+        cout << "~.~.~\n" << endl;
+    }
     
 };
