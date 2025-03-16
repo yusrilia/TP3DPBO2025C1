@@ -7,60 +7,95 @@ using namespace std;
 #include "OperatingSystem.cpp"
 #include "Application.cpp"
 #include "Computer.cpp"
+#include <iostream>
+#include <vector>
+#include <algorithm>  
+
+using namespace std;
 
 int main() {
-    // Create a Computer instance
-    OperatingSystem os("Windows", "11", "64-bit", "NT");
-    Memory mem("Corsair 16GB", 75.99, 3, "Corsair", 16, 3200);
-    
-    Computer myPC("Gaming", os, mem);
+    // init os
+    OperatingSystem os1("Windows 11", "10.0", "64-bit", "NT");
+    OperatingSystem os2("Ubuntu", "22.04", "64-bit", "Linux");
 
-    // Adding Hard Drives
-    cout << "Adding Hard Drives..." << endl;
-    myPC.addHardDrive(HardDrive("Samsung 970 Evo", 120.50, 5, "Samsung", 1000, "NVMe", 256));
-    myPC.addHardDrive(HardDrive("WD Blue HDD", 60.75, 3, "Western Digital", 2000, "HDD", 64));
+    // init memory
+    Memory mem1("Corsair RAM", 120.0, 3, "Corsair", 16, 3200);
+    Memory mem2("Kingston RAM", 90.0, 2, "Kingston", 8, 2666);
 
-    // Adding Applications
-    cout << "Installing Applications..." << endl;
-    myPC.addApplication(Application("Photoshop", "2023", "Graphics", "Paid"));
-    myPC.addApplication(Application("VLC Media Player", "3.0.18", "Media", "Free"));
+    // create computers (Using array of objexts)
+    Computer computers[2] = {
+        Computer("Gaming PC", os1, mem1),
+        Computer("Workstation", os2, mem2)
+    };
 
-    // Display Computer Info
-    cout << "\n--- Computer Information ---" << endl;
-    cout << "Type: " << myPC.getType() << endl;
-    cout << "OS: " << myPC.getOS().getName() << " " << myPC.getOS().getVersion() << endl;
-    cout << "Memory: " << myPC.getMemory().getSize() << "GB, " << myPC.getMemory().getSpeed() << "MHz" << endl;
+    // init harddrives
+    HardDrive hd1("Samsung 970 Evo", 120.50, 5, "Samsung", 1000, "NVMe", 256);
+    HardDrive hd2("Seagate HDD", 90.0, 3, "Seagate", 2000, "HDD", 256);
+    HardDrive hd3("WD Blue HDD", 80.0, 3, "Western Digital", 1000, "HDD", 128);
 
-    // Display Hard Drives
-    cout << "\nHard Drives:" << endl;
-    for (const auto& hd : myPC.getHardDrives()) {
-        cout << "- " << hd.getName() << " (" << hd.getCapacity() << "GB, " << hd.getType() << ", " << hd.getCache() << "MB Cache)" << endl;
+    // init apps
+    Application app1("Photoshop", "2024", "Design", "Commercial");
+    Application app2("VS Code", "1.80", "Development", "Free");
+    Application app3("Spotify", "1.5", "Music", "Subscription");
+
+    // add harddrives and apps to computers
+    computers[0].addHardDrive(hd1);
+    computers[1].addHardDrive(hd2);
+    computers[0].addApplication(app1);
+    computers[1].addApplication(app2);
+        
+
+    // print computer informations
+    cout << "\n~.~.~ Computer Info ~.~.~\n";    
+    for (int i = 0; i < 2; i++) {
+        cout << "Computer #" << i+1 << ": " << computers[i].getType() << endl;
+        cout << "OS: " << computers[i].getOS().getName() << endl;
+        cout << "Memory: " << computers[i].getMemory().getSize() << "GB\n";
+
+        cout << "Hard Drives:\n";
+        for (const auto& hd : computers[i].getHardDrives()) {
+            cout << " - " << hd.getName() << " (" << hd.getCapacity() << ")\n";
+        }
+
+        cout << "Applications:\n";
+        for (const auto& app : computers[i].getApplications()) {
+            cout << " - " << app.getName() << " (" << app.getCategory() << ")\n";
+        }
+        cout << "~.~.~\n\n";
     }
 
-    // Display Applications
-    cout << "\nApplications:" << endl;
-    for (const auto& app : myPC.getApplications()) {
-        cout << "- " << app.getName() << " (" << app.getCategory() << ", " << app.getLicense() << ")" << endl;
-    }
+    // Simulation: Adding & Removing Hard Drives and Applications
+    cout << "\n~.~.~ Adding More Hard Drives & Applications ~.~.~\n";
+    computers[0].addHardDrive(hd3);
+    computers[1].addApplication(app3);
 
-    // Simulating Hard Drive Removal
-    cout << "\nRemoving Hard Drive: WD Blue HDD..." << endl;
-    myPC.removeHardDrive("WD Blue HDD");
+    cout << "Added WD Blue HDD to Gaming PC.\n";
+    cout << "Added Spotify to Workstation.\n";
 
-    // Simulating Application Removal
-    cout << "\nUninstalling Application: VLC Media Player..." << endl;
-    myPC.removeApplication("VLC Media Player");
 
-    // Display Updated List
-    cout << "\n--- Updated Computer Information ---" << endl;
-    cout << "\nHard Drives after removal:" << endl;
-    for (const auto& hd : myPC.getHardDrives()) {
-        cout << "- " << hd.getName() << " (" << hd.getCapacity() << "GB, " << hd.getType() << ", " << hd.getCache() << "MB Cache)" << endl;
-    }
+    cout << "\n~.~.~ Removing Hard Drives & Applications ~.~.~\n";
+    computers[0].removeHardDrive("Samsung SSD");
+    computers[1].removeApplication("VS Code");
 
-    cout << "\nApplications after removal:" << endl;
-    for (const auto& app : myPC.getApplications()) {
-        cout << "- " << app.getName() << " (" << app.getCategory() << ", " << app.getLicense() << ")" << endl;
+    cout << "Removed Samsung SSD from Gaming PC.\n";
+    cout << "Removed VS Code from Workstation.\n";
+
+    cout << "\n~.~.~ Updated Computer Details ~.~.~\n";
+    for (int i = 0; i < 2; i++) {
+        cout << "Computer #" << i+1 << ": " << computers[i].getType() << endl;
+        cout << "OS: " << computers[i].getOS().getName() << endl;
+        cout << "Memory: " << computers[i].getMemory().getSize() << "GB\n";
+
+        cout << "Hard Drives:\n";
+        for (const auto& hd : computers[i].getHardDrives()) {
+            cout << " - " << hd.getName() << " (" << hd.getCapacity() << ")\n";
+        }
+
+        cout << "Applications:\n";
+        for (const auto& app : computers[i].getApplications()) {
+            cout << " - " << app.getName() << " (" << app.getCategory() << ")\n";
+        }
+        cout << "~.~.~\n\n";
     }
 
     return 0;
